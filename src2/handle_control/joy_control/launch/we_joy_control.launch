@@ -1,0 +1,22 @@
+<launch>
+  <!--
+  <node pkg="joy" type="joy_node" name="joy_driver" output="screen">
+    <rosparam file="$(find joy_control)/cfg/we_joy_control.yaml" command="load" />
+  </node>
+-->
+
+  <node pkg="joy_control" type="joy_teleop" name="joy_teleop" output="screen">
+    <rosparam file="$(find joy_control)/cfg/we_joy_control.yaml" command="load" />
+  </node>
+
+  <node pkg="joy" type="joy_node" name="joy_driver1" output="screen">
+    <rosparam file="$(find joy_control)/cfg/we_joy_control1.yaml" command="load" />
+  </node>
+
+  <!--
+  <node pkg="joy_control" type="joy_teleop" name="joy_teleop1" output="screen">
+    <rosparam file="$(find joy_control)/cfg/we_joy_control1.yaml" command="load" />
+  </node>
+-->
+</launch>
+
