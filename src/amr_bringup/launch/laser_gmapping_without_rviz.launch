@@ -1,0 +1,10 @@
+<launch>  
+    <include file="$(find base_node)/launch/base_node.launch"/>         <!--打开底盘控制节点，可以通过遥控器实现运动控制，并获取里程计信息-->
+    <include file="$(find joy_control)/launch/we_joy_control.launch"/>              <!--打开遥控器-->
+    <include file="$(find lslidar_n301_decoder)/launch/lslidar_n301.launch"/>       <!--打开激光雷达数据接收节点-->
+    <!--include file="$(find hwtimu)/launch/hwtimupub.launch"/-->                        <!--打开IMU数据发布节点-->
+    <include file="$(find amr_bringup)/launch/fixed_tf_tree.launch"/>
+    <!--include file="$(find robot_pose_ekf)/launch/robot_pose_ekf.launch"/-->
+    <include file="$(find set_slam)/launch/amr_gmapping.launch"/>              <!--开启SLAM节点-->
+    <include file="$(find set_slam)/launch/save_map.launch"/>
+</launch>

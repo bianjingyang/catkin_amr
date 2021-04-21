@@ -1,0 +1,25 @@
+local_costmap:
+   global_frame: /map
+   robot_base_frame: /base_footprint
+   update_frequency: 10.0
+   publish_frequency: 4.0
+   static_map: false
+   rolling_window: true #Whether or not to use a rolling window version of the costmap. If the static_map parameter is set to true, this parameter must be set to false
+   width: 6.0
+   height: 6.0
+   resolution: 0.05
+   origin_x: 0.0   
+   origin_y: 0.0
+   transform_tolerance: 1.0   #指定tf转换之间的最大延迟。 如果 tf 树没有以期望速度被更新，那么导航功能包集将会让机器人停止。
+   plugins:
+    - {name: voxel_layer,      type: "costmap_2d::VoxelLayer"}
+    - {name: inflation_layer,     type: "costmap_2d::InflationLayer"}       
+    #- {name: sonar_layer,   type: "range_sensor_layer::RangeSensorLayer"}
+
+   sonar_layer:
+      enabled: true
+      #clear_threshold: 0.46
+      #mark_threshold: 0.98
+      topics: ["/sonar1","/sonar2","/sonar3","/sonar4","/sonar5","/sonar6","/sonar7","/sonar8"]  #注意替换成自己的topic名字
+      no_readings_timeout: 0.0
+      clear_on_max_reading: false

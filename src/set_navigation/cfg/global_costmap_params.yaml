@@ -1,0 +1,19 @@
+global_costmap:
+   global_frame: /map
+   robot_base_frame: /base_footprint
+   update_frequency: 1.0 #—根据传感器数据,全局地图更新的频率,单位为赫兹。这个数值越大,你的计算机的CPU负担会越重。特别对于全局地图,通常会设定一个相对较小、在1.0到5.0之间的值。
+   publish_frequency: 1  #对于静态的全局地图来说,不需要不断发布,则设为0。
+   static_map: true   #这个参数和下一个参数通常会设为相反的值。全局地图通常是静态的,因此我们通常会把这个参数设为true
+   rolling_window: false   #我们把这个参数设为 false时,全局地图不会在机器人移动的时候更新。
+   transform_tolerance: 1.0
+   
+   #map_type: costmap
+
+   plugins:
+      - {name: static_layer,            type: "costmap_2d::StaticLayer"}
+      #- {name: voxel_layer,             type: "costmap_2d::VoxelLayer"}
+      - {name: inflation_layer,         type: "costmap_2d::InflationLayer"}
+  
+   #注释plugins及其参数
+   #然后添加map_type:costmap,这样的话全局地图不会被更新,或者不添加,只注释voxel_layer
+   #若不更新全局地图,当遇到障碍物时,全局路径规划器不会被更新,有可能避障导航失败

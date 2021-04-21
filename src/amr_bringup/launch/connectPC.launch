@@ -1,0 +1,4 @@
+<launch>  
+    <node name="netbase_communicate_node" pkg="netbase_communicate" type="netbase_communicate_node" output="screen"/>              <!--打开路由器节点-->
+    <node name="set_goals_node" pkg="set_nav_goals" type="set_goals_node" required="true" output="screen"/>        <!--打开任务节点-->
+</launch>

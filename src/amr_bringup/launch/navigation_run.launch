@@ -1,0 +1,23 @@
+<launch>
+
+    <!--param name="use_sim_time" value="false" /-->
+
+    <include file="$(find base_node)/launch/base_node.launch"/>           <!--打开底盘控制节点，可以通过遥控器实现运动控制，并获取里程计信息-->
+    <include file="$(find handle)/launch/we_joy_control.launch"/>              <!--打开遥控器-->
+    
+    
+     
+   
+    <include file="$(find lslidar_n301_decoder)/launch/lslidar_n301.launch"/>       <!--打开激光雷达数据接收节点-->
+    <!--include file="$(find hwtimu)/launch/hwtimupub.launch"/-->                        <!--打开IMU数据发布节点--> 
+    <include file="$(find amr_bringup)/launch/fixed_tf_tree.launch"/>             <!--发布固定坐标转换-->
+    
+    
+    
+    <!--include file="$(find robot_pose_ekf)/launch/robot_pose_ekf.launch"/-->
+    <include file="$(find set_navigation)/launch/navigation_rviz.launch"/>             <!--已知地图的自主导航-->
+
+    <!-- 不用amcl的时候设置一个/odom与/map之间的静态坐标变换 -->
+    <!--node pkg="tf" type="static_transform_publisher" name="map_odom_broadcaster" args="0 0 0 0 0 0 /map /odom 50" /-->
+
+</launch>

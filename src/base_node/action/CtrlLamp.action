@@ -1,0 +1,9 @@
+#GOAL
+string task
+---
+#result
+uint8 taskIsFininshed 
+---
+#feedback
+uint8 taskProgress
+

@@ -1,0 +1,60 @@
+﻿DWAPlannerROS:
+
+# Robot Configuration Parameters
+  max_vel_x: 0.45     #The maximum x velocity for the robot in m/s
+  min_vel_x: 0.0      #若设为负值时,机器人可后退
+
+  max_vel_y: 0.0   #对于两轮差分驱动机器人是无效的
+  min_vel_y: 0.0
+
+  # The velocity when robot is moving in a straight line
+  max_trans_vel:  0.45   #最大平移速度绝对值,表示机器人最大线速度(0.55m/s)
+  min_trans_vel:  0.1
+  trans_stopped_vel: 0.05  #机器人被认属于“停止”状态时的平移速度。如果机器人的速度低于该值，则认为机器人已停止。单位为 m/s
+  # Warning!
+  #   do not set min_trans_vel to 0.0 otherwise dwa will always think translational velocities
+  #   are non-negligible and small in place rotational velocities will be created.
+  #注意不要将min_trans_vel设置为0，否则DWA认为平移速度不可忽略，将创建较小的旋转速度
+
+  max_rot_vel: 1.2               #The absolute value of the maximum rotational velocity for the robot in rad/s
+  min_rot_vel: 0.1
+  rot_stopped_vel: 0.05  #机器人被认属于“停止”状态时的旋转速度。单位为 rad/s
+
+
+  #加速度限制（acc_lim_x，acc_lim_y，acc_lim_th）非常的重要，如果不知道机器人的加速度，可以尽量的往大的设置，因为如果设置太小了，
+  #往往会出现机器人往前跑断断续续的，转弯转过头（看似加速度太大了，实际是加速度太小，以至于机器人想把机器人掰回来而掰不及），从而导致反复的震荡（oscillating over and over）
+  #例如下面的错误提示：Aborting because the robot appears to be oscillating over and over. Even after executing all recovery behaviors
+  acc_lim_x: 1.8                 #最大加速度，默认2.5 m/s^2    2
+  acc_lim_theta: 3.2             #默认3.2  6
+  acc_lim_y: 0.0               #差速机器人设为0
+
+# Goal Tolerance Parametes
+  yaw_goal_tolerance: 0.1     #偏航/旋转允许误差（rad）此值太小会造成机器人在目标附近震荡
+  xy_goal_tolerance: 0.1            #x、y方向允许误差(m) 此值设置太小，机器人会没完没了在目标位置周围做小调整，而且此值不能小于地图的分辨率
+  latch_xy_goal_tolerance: true   #一般都为false，如果为true是什么意思呢？就是当进入xy_goal_tolerance范围内后会设置一个锁，此后即使在旋转调整yaw的过程中跳出xy_goal_tolerance，也不会进行xy上的调整。在到达位置后继续调整姿态到指定位姿，即使旋转后xy的误差会在允许范围之外（false）
+
+# Forward Simulation Parameters
+  sim_time: 3.0                       #表示规划器能看到未来多少秒,默认值：局部路径模拟的时间不用太长也不用太短，一般一秒左右就差不多了，如果太多会容易导致偏离全局的路径，特别启动的时候会转较大的半径，如果想启动的时候基本原地旋转摆正机器人
+                                       #的方向和全局路径的方向一致，那么就把模拟的时间设置短点。如果太小的仿真时间也不好，容易导致频繁的路径规划消耗资源，甚至也会出现震荡的可能
+                                      
+  vx_samples: 20
+  vy_samples: 0
+  vtheta_samples: 40
+
+# Trajectory Scoring Parameters
+  path_distance_bias: 32.0            #控制器遵守预定路径的程度（32.0）刻画局部路径和全局路径的贴合程度，该权重参数越大说明越贴合，越小说明不用那么贴合
+  goal_distance_bias: 24.0            #尝试到达局部目标的程度(24.0)
+  occdist_scale: 0.08                  #尝试避障的程度（默认值0.01)该值过大容易使机器人陷入困境
+  
+  forward_point_distance: 0.325
+  stop_time_buffer: 0.2               #碰撞之前必须停止的时间，大概就是指要提前多久开始停止才不会撞上（0.2s）
+  scaling_speed: 0.25
+  max_scaling_factor: 0.2
+
+# Oscillation Prevention Parameters
+  oscillation_reset_dist: 0.05  #0.05
+
+# Debugging
+  publish_traj_pc : true
+  publish_cost_grid_pc: true
+  global_frame_id: odom

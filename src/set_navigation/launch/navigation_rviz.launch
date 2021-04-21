@@ -1,0 +1,7 @@
+<launch>
+  <include file="$(find set_navigation)/launch/navigation.launch"/>
+     
+  <!-- 运行rviz -->
+  <!--node pkg="rviz" type="rviz" name="rviz" args="-d $(find set_navigation)/rviz/nav.rviz"/-->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find set_navigation)/rviz/navigation.rviz"/>
+</launch>

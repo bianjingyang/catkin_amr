@@ -1,0 +1,4 @@
+<launch>  
+    <include file="$(find amr_bringup)/launch/navigation_run.launch"/>              <!--打开遥控器-->
+    <include file="$(find amr_bringup)/launch/connectPC.launch"/>         <!--打开底盘控制节点，，并获取里程计信息-->
+</launch>

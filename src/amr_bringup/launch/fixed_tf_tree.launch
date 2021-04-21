@@ -1,0 +1,14 @@
+<launch>  
+
+<!--发布固定坐标转换-->
+    <node pkg="tf" type="static_transform_publisher" name="base_to_laser" args="0.255 0 0.065 0 0 0 /base_footprint /laser_link 50"/>       <!--周期为50ms频率为20Hz-->
+    <!--node pkg="tf" type="static_transform_publisher" name="base_to_imu" args="0 0 0 0 0 0 /base_footprint /imu_link 50"/-->
+    <node pkg="tf" type="static_transform_publisher" name="base_to_rangeSensor1" args="0.27  0.14 0.3 0 0 0 /base_footprint /ultrasound1 50"/>   <!--args="x y z yaw pitch roll (m)\(rad)...-->
+    <node pkg="tf" type="static_transform_publisher" name="base_to_rangeSensor2" args="0.27  -0.14 0.3 0 0 0 /base_footprint /ultrasound2 50"/>
+    <node pkg="tf" type="static_transform_publisher" name="base_to_rangeSensor3" args="-0.32 0.13 0.24 -3.141593 0 0 /base_footprint /ultrasound3 50"/>
+    <node pkg="tf" type="static_transform_publisher" name="base_to_rangeSensor4" args="-0.32  -0.13 0.24 -3.141593 0 0 /base_footprint /ultrasound4 50"/>
+    <node pkg="tf" type="static_transform_publisher" name="base_to_rangeSensor5" args="0 0 0.8 0 0 0 /base_footprint /ultrasound5 50"/>
+    <node pkg="tf" type="static_transform_publisher" name="base_to_rangeSensor6" args="0 0 0.8 0 0 0 /base_footprint /ultrasound6 50"/>
+    <node pkg="tf" type="static_transform_publisher" name="base_to_rangeSensor7" args="0 0 0.8 -3.141593 0 0 /base_footprint /ultrasound7 50"/>
+    <node pkg="tf" type="static_transform_publisher" name="base_to_rangeSensor8" args="0 0 0.8 -3.141593 0 0 /base_footprint /ultrasound8 50"/>
+</launch>

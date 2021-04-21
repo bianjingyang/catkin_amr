@@ -1,0 +1,4 @@
+<launch>  
+    <include file="$(find handle)/launch/we_joy_control.launch"/>              <!--打开遥控器-->
+    <include file="$(find base_node)/launch/base_node.launch"/>         <!--打开底盘控制节点，，并获取里程计信息-->
+</launch>

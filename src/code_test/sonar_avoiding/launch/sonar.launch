@@ -1,0 +1,7 @@
+<launch>
+    <node pkg="sonar" type="sonar_publisher" name="sonar_publisher"/>
+    <node pkg="tf" type="static_transform_publisher" name="sonar_link"
+          args="0 0 0.5 0 0 0 /base_link /ultrasound 50"/>   <!--args="x y z yaw pitch roll (m)\(rad)...-->
+    <node pkg="tf" type="static_transform_publisher" name="sonar_link2"
+          args="0 0 0.5 -3.141593 0 0 /base_link /ultrasound2 50"/>
+</launch>

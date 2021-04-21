@@ -1,0 +1,7 @@
+<launch>
+    <!--设置地图的名称-->
+    <arg name="map_name" default="shenhao2" />
+
+    <node  pkg="set_slam" name="save_map" type="save_map" args="-f $(find set_slam)/maps/$(arg map_name)" output="screen" />
+
+</launch>

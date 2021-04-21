@@ -1,0 +1,3 @@
+<launch>
+    <node pkg="code_test" type="pub_batteryAndSonar" name="pub_batteryAndSonar" />
+</launch>

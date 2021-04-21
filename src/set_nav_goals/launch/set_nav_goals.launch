@@ -1,0 +1,6 @@
+<launch>
+
+    <!--rosparam command="load" file="$(find set_nav_goals)/cfg/goal.yaml"/-->
+    <node pkg="set_nav_goals" type="set_nav_goals" name="set_nav_goals" output="screen" />
+
+</launch>

@@ -1,0 +1,13 @@
+##  aaa
+G256            X-3805     Y-155
+##  bbb
+G257            X-40     Y280
+##  room1
+G0           X400     Y0
+T0 P0
+##  room1
+G0            X400     Y1200
+T0 P0
+##  room1
+G0            X0     Y0
+##  room1

@@ -1,0 +1,10 @@
+<launch>
+    <node pkg="tf" type="static_transform_publisher" name="base_to_imu" args="0 0 0 0 0 0 /base_footprint /imu_link 50"/> <!--周期为50ms频率为20Hz-->
+    <include file="$(find joy_control)/launch/we_joy_control.launch"/>              <!--打开遥控器-->
+    <include file="$(find base_node)/launch/base_node.launch"/>         <!--打开底盘控制节点，，并获取里程计信息-->
+    <include file="$(find hwtimu)/launch/hwtimupub.launch"/>                        <!--打开IMU数据发布节点-->
+    <include file="$(find robot_pose_ekf)/launch/robot_pose_ekf.launch"/>
+    <node pkg="robot_location" type="show_path1" name="show_path1"/>
+    <node pkg="robot_location" type="show_path2" name="show_path2" output="screen"/>
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find robot_location)/rviz/show_path.rviz"/>
+</launch>

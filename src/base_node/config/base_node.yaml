@@ -1,0 +1,17 @@
+#串口通信参数配置
+serial1_cfg:
+  SERIAL_STM: /dev/ttyUSB0
+  BAUD_STM: 9600
+  TIMEOUT: 50
+  RATE: 20
+
+serial2_cfg:
+  SERIAL_STM: /dev/ttyS1
+  BAUD_STM: 9600
+  TIMEOUT: 50
+  RATE: 10
+
+speed_limit:  #单位为m/s
+  x: 1.0
+  y: 0.
+  r: 1.0
